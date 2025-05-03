@@ -26,7 +26,7 @@ if "%1"=="lint" (
 
 rem Command Activate venv
 if "%1"=="activate" (
-    call .\venv\Scripts\activate.bat
+    call .\project\venv\Scripts\activate.bat
 )
 
 rem Command deactivate venv
