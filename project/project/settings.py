@@ -38,14 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',  # Requerido por allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',  # Proveedor de Google para autenticación social
+    
     
     #Aplicaciones propias
     'sweetsky',
+    
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+
+# Configuración mínima para django-allauth:
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,10 +138,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-SITE_ID = 1
-
-AUTH_USER_MODEL = 'sweetsky.CustomUser'
-
+AUTH_USER_MODEL = 'auth.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
