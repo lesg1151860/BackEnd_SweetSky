@@ -1,7 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.conf import settings
-
+from django.contrib.auth.models import User
 
 
 # Modelo para Salsas
@@ -13,6 +11,7 @@ class Sauce(models.Model):
     def __str__(self):
         return self.name
 
+
 # Modelo para Toppings
 class Topping(models.Model):
     name = models.CharField(max_length=100, unique=True)  # Nombre del topping
@@ -21,6 +20,7 @@ class Topping(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # Modelo para Producto
 class Product(models.Model):
@@ -31,6 +31,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+
 # Modelo para Presentación
 class Presentation(models.Model):
     name = models.CharField(max_length=100, unique=True)  # Name of the presentation
@@ -44,6 +45,7 @@ class Presentation(models.Model):
     def __str__(self):
         return f"{self.name} - {self.price} COL$"  # Returns the name and price of the presentation
     
+
 # Modelo para Orden de Pedido
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -59,7 +61,7 @@ class Order(models.Model):
         ('Villa del Rosario', 8000),
     ]
 
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Relación con el usuario (cliente)
+    client = models.ForeignKey(User, on_delete=models.CASCADE)  # Relación con el usuario (cliente)
     presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)  # Relación con Presentación
     delivery_address = models.TextField(max_length=300)  # Dirección de entrega
     city = models.CharField(max_length=50, choices=[(city, city) for city, _ in CITY_CHOICES])  # Ciudad
@@ -86,13 +88,3 @@ class Order(models.Model):
         verbose_name = "Pedido"
         verbose_name_plural = "Pedidos"
         ordering = ['-date_creacion']
-        
-
-class CustomUser(AbstractUser):
-    address = models.TextField(max_length=300, blank=True, null=True)  # Dirección
-    phone_number = models.CharField(max_length=15, blank=True, null=True)  # Teléfono
-    date_of_birth = models.DateField(blank=True, null=True)  # Fecha de nacimiento
-    profile_picture = models.URLField(blank=True, null=True)  # Imagen de perfil (opcional)
-
-    def __str__(self):
-        return self.username
