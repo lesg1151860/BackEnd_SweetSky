@@ -1,0 +1,7 @@
+<h1>Nuevo Topping</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'sweetsky:topping_list' %}">Volver a la lista</a>

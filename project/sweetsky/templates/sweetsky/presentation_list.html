@@ -1,0 +1,10 @@
+<!-- sweetsky/templates/sweetsky/presentation_list.html -->
+<h1>Lista de Presentaciones</h1>
+<ul>
+  {% for presentation in object_list %}
+    <li>
+      <a href="{% url 'sweetsky:presentation_detail' presentation.pk %}">{{ presentation.name }}</a> - Creado: {{ presentation.creation_date }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'sweetsky:presentation_create' %}">Agregar nueva presentación</a>

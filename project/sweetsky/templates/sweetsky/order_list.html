@@ -1,0 +1,10 @@
+<!-- sweetsky/templates/sweetsky/order_list.html -->
+<h1>Lista de Pedidos</h1>
+<ul>
+  {% for order in object_list %}
+    <li>
+      <a href="{% url 'sweetsky:order_detail' order.pk %}">Pedido #{{ order.pk }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'sweetsky:order_create' %}">Agregar nuevo pedido</a>

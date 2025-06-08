@@ -1,0 +1,9 @@
+<h1>Lista de Salsas</h1>
+<ul>
+  {% for sauce in object_list %}
+    <li>
+      <a href="{% url 'sweetsky:sauce_detail' sauce.pk %}">{{ sauce.name }}</a> - Creado: {{ sauce.date_creacion }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'sweetsky:sauce_create' %}">Agregar nueva salsa</a>

@@ -1,0 +1,9 @@
+<h1>Lista de Toppings</h1>
+<ul>
+  {% for topping in object_list %}
+    <li>
+      <a href="{% url 'sweetsky:topping_detail' topping.pk %}">{{ topping.name }}</a> - Creado: {{ topping.date_creacion }}
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'sweetsky:topping_create' %}">Agregar nuevo topping</a>
