@@ -4,5 +4,5 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lambda request: redirect('admin/', permanent=False)),  # Redirige la raíz al admin
+    path('', lambda request: redirect('admin/sweetsky/', permanent=False)),  # Redirige la raíz al admin
 ]
